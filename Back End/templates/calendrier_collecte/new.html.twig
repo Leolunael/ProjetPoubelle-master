@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CalendrierCollecte{% endblock %}
+
+{% block body %}
+    <h1>Create new CalendrierCollecte</h1>
+
+    {{ include('calendrier_collecte/_form.html.twig') }}
+
+    <a href="{{ path('app_calendrier_collecte_index') }}">back to list</a>
+{% endblock %}

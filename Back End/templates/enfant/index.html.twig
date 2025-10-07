@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EnfantController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Bonjour, amusez-vous bien</h1>
+
+    <div class="images">
+        <a href="#"><img src="{{ asset('images/ecologie.jpg') }}" alt="Brochure"></a>
+    </div>
+
+    <h3>Lien vers le quiz</h3>
+    <li class="nav-item"><a class="nav-link" href="{{ path('quiz_answer') }}"><img src="{{ asset('images/quiz.jpeg') }}" alt="Quiz"></a></li>
+</div>
+{% endblock %}

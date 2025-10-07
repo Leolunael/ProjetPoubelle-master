@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon signalement{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h2>✏️ Modifier mon signalement</h2>
+
+    {{ form_start(form) }}
+        {{ form_row(form.adresse) }}
+        {{ form_row(form.commentaire) }}
+        {{ form_row(form.date) }}
+        {{ form_row(form.latitude) }}
+        {{ form_row(form.longitude) }}
+
+        <button class="btn btn-primary mt-3">💾 Enregistrer les modifications</button>
+        <a href="{{ path('user_signalements') }}" class="btn btn-secondary mt-3">⬅ Annuler</a>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

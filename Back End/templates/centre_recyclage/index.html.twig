@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CentreRecyclage index{% endblock %}
+
+{% block body %}
+    <h1>CentreRecyclage index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Horaires</th>
+                <th>TypesDechets</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for centre_recyclage in centre_recyclages %}
+            <tr>
+                <td>{{ centre_recyclage.id }}</td>
+                <td>{{ centre_recyclage.nom }}</td>
+                <td>{{ centre_recyclage.adresse }}</td>
+                <td>{{ centre_recyclage.latitude }}</td>
+                <td>{{ centre_recyclage.longitude }}</td>
+                <td>{{ centre_recyclage.horaires }}</td>
+                <td>{{ centre_recyclage.typesDechets ? centre_recyclage.typesDechets|json_encode : '' }}</td>
+                <td>{{ centre_recyclage.description }}</td>
+                <td>
+                    <a href="{{ path('app_centre_recyclage_show', {'id': centre_recyclage.id}) }}">show</a>
+                    <a href="{{ path('app_centre_recyclage_edit', {'id': centre_recyclage.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+     <a href="{{ path('app_calendrier_collecte_new') }}" class="btn btn-primary">➕ Create new</a>
+<br>
+<a href="{{ path('admin_dashboard') }}" class="btn btn-secondary mt-3">⬅ Retour au panneau d’administration</a>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail du centre{% endblock %}
+
+{% block body %}
+    <h1>{{ centre.nom }}</h1>
+
+    <p><strong>Adresse :</strong> {{ centre.adresse }}</p>
+    <p><strong>Horaires :</strong> {{ centre.horaires|nl2br }}</p>
+
+    <p><strong>Types de déchets acceptés :</strong></p>
+    <ul>
+        {% for type in centre.typesDechets %}
+            <li>{{ type }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>{{ centre.description }}</p>
+
+    <a href="{{ path('centre_liste') }}">← Retour à la carte</a>
+{% endblock %}
+

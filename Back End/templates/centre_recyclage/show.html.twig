@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CentreRecyclage{% endblock %}
+
+{% block body %}
+    <h1>CentreRecyclage</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ centre_recyclage.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ centre_recyclage.nom }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ centre_recyclage.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{ centre_recyclage.latitude }}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ centre_recyclage.longitude }}</td>
+            </tr>
+            <tr>
+                <th>Horaires</th>
+                <td>{{ centre_recyclage.horaires }}</td>
+            </tr>
+            <tr>
+                <th>TypesDechets</th>
+                <td>{{ centre_recyclage.typesDechets ? centre_recyclage.typesDechets|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ centre_recyclage.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_centre_recyclage_index') }}">back to list</a>
+
+    <a href="{{ path('app_centre_recyclage_edit', {'id': centre_recyclage.id}) }}">edit</a>
+
+    {{ include('centre_recyclage/_delete_form.html.twig') }}
+{% endblock %}

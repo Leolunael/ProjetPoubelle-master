@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %}Mes points{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h2>🪙 Mes points de fidélité</h2>
+    <p>Total : <strong>{{ total }}</strong> points</p>
+
+    <ul class="list-group mt-3">
+        {% for point in details %}
+            <li class="list-group-item d-flex justify-content-between">
+                {{ point.action }} ({{ point.date|date('d/m/Y') }})
+                <span class="badge bg-success">{{ point.points }}</span>
+            </li>
+        {% else %}
+            <li class="list-group-item">Aucun point attribué.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ path('user_points') }}" class="btn btn-secondary mt-3">⬅ Retour à l’espace utilisateur</a>
+</div>
+{% endblock %}
+

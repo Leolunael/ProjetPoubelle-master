@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des signalements{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h2>📋 Liste des signalements</h2>
+
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Adresse</th>
+                <th>Date</th>
+                <th>Commentaire</th>
+                <th>Utilisateur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in signalements %}
+                <tr>
+                    <td>{{ s.id }}</td>
+                    <td>{{ s.adresse }}</td>
+                    <td>{{ s.date|date('d/m/Y') }}</td>
+                    <td>{{ s.commentaire ?: '-' }}</td>
+                    <td>{{ s.utilisateur ? s.utilisateur.email : 'N/A' }}</td>
+                    <td>
+                        {# Formulaire de suppression #}
+                        <form method="post" action="{{ path('admin_signalement_delete', {id: s.id}) }}" style="display:inline-block" onsubmit="return confirm('Voulez-vous vraiment supprimer ce signalement ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ s.id) }}">
+                            <button class="btn btn-danger btn-sm">🗑 Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6" class="text-center">Aucun signalement trouvé.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_dashboard') }}" class="btn btn-secondary mt-3">⬅ Retour au panneau d’administration</a>
+</div>
+{% endblock %}

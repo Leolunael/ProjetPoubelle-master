@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Espace utilisateur{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="mb-4">👤 Mon espace utilisateur</h1>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            🪙 <a href="{{ path('user_points_detail') }}">Voir mes points de fidélité</a>
+        </li>
+        <li class="list-group-item">
+            🗑️ <a href="{{ path('user_signalements') }}">Voir mes signalements</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Signalement{% endblock %}
+
+{% block body %}
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                <h1 class="mb-4">♻️ Signaler une poubelle pleine</h1>
+
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+
+                {{ form_start(form, {'attr': {'aria-label': 'Formulaire de signalement'}}) }}
+
+                    <div class="mb-3">
+                        {{ form_label(form.adresse, null, {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.adresse, {'attr': {'class': 'form-control', 'aria-label': 'Adresse'}}) }}
+                        {{ form_errors(form.adresse) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(form.commentaire, null, {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.commentaire, {'attr': {'class': 'form-control', 'aria-label': 'Commentaire', 'rows': 4}}) }}
+                        {{ form_errors(form.commentaire) }}
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form_label(form.latitude, null, {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.latitude, {'attr': {'class': 'form-control', 'aria-label': 'Latitude'}}) }}
+                            {{ form_errors(form.latitude) }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form_label(form.longitude, null, {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.longitude, {'attr': {'class': 'form-control', 'aria-label': 'Longitude'}}) }}
+                            {{ form_errors(form.longitude) }}
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg" aria-label="Envoyer le signalement">
+                            📤 Envoyer
+                        </button>
+                    </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

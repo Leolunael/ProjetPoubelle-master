@@ -1,0 +1,30 @@
+// Styles Bootstrap personnalisés pour le quiz
+@import "~bootstrap/scss/bootstrap";
+
+.quiz-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.quiz-card {
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  border: none;
+}
+
+.quiz-option {
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+}
+
+.quiz-button-gradient {
+  background: linear-gradient(135deg, #28a745, #007bff);
+  border: none;
+
+  &:hover {
+    background: linear-gradient(135deg, #218838, #0056b3);
+    transform: translateY(-1px);
+  }
+}

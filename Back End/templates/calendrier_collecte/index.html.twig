@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CalendrierCollecte index{% endblock %}
+
+{% block body %}
+    <h1>CalendrierCollecte index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Adresse</th>
+                <th>TypeDechet</th>
+                <th>JourCollecte</th>
+                <th>Remarque</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for calendrier_collecte in calendrier_collectes %}
+            <tr>
+                <td>{{ calendrier_collecte.id }}</td>
+                <td>{{ calendrier_collecte.adresse }}</td>
+                <td>{{ calendrier_collecte.typeDechet }}</td>
+                <td>{{ calendrier_collecte.jourCollecte ? calendrier_collecte.jourCollecte|date('Y-m-d') : '' }}</td>
+                <td>{{ calendrier_collecte.remarque }}</td>
+                <td>
+                    <a href="{{ path('app_calendrier_collecte_show', {'id': calendrier_collecte.id}) }}">show</a>
+                    <a href="{{ path('app_calendrier_collecte_edit', {'id': calendrier_collecte.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   <a href="{{ path('app_calendrier_collecte_new') }}" class="btn btn-primary">➕ Create new</a>
+<br>
+<a href="{{ path('admin_dashboard') }}" class="btn btn-secondary mt-3">⬅ Retour au panneau d’administration</a>
+
+{% endblock %}

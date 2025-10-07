@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "@babel/preset-react": "^7.27.1",
+    "axios": "^1.12.2",
+    "lucide-react": "^0.544.0"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^4.7.0",
+    "css-loader": "^7.1.2",
+    "file-loader": "^6.2.0",
+    "sass": "^1.92.1",
+    "sass-loader": "^14.2.1"
+  },
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  }
+}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Attribuer des points{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Attribuer des points de fidélité</h1>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+
+        {{ form_start(form) }}
+            {{ form_row(form.utilisateur) }}
+            {{ form_row(form.action) }}
+            {{ form_row(form.points) }}
+            {{ form_row(form.date) }}
+            <button class="btn btn-primary">Attribuer</button>
+        {{ form_end(form) }}
+
+          <a href="{{ path('admin_dashboard') }}" class="btn btn-secondary mt-3">⬅ Retour au panneau d’administration</a>
+    </div>
+{% endblock %}

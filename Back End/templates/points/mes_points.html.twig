@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes points de fidélité{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Mes points de fidélité</h1>
+
+        <p><strong>Total :</strong> {{ total }} points</p>
+
+        {% if details is not empty %}
+            <h2>Historique des points</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Points</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for point in details %}
+                        <tr>
+                            <td>{{ point.action }}</td>
+                            <td>{{ point.points }}</td>
+                            <td>{{ point.date|date('d/m/Y H:i') }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Aucun point attribué pour le moment.</p>
+        {% endif %}
+    </div>
+{% endblock %}
+

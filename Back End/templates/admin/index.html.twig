@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Panneau d'administration</h1>
+        <ul>
+            <li><a href="{{ path('admin_points_new') }}">Attribuer des points de fidélité</a></li>
+            <li><a href="{{ path('admin_signalements') }}">Voir tous les signalements</a></li>
+           <li><a href="{{ path('app_calendrier_collecte_index') }}">Modifier les dates de collecte</a></li>
+            <li><a href="{{ path('app_centre_recyclage_index') }}">Modifier les centres de recyclage</a></li>
+        </ul>
+    </div>
+{% endblock %}
+

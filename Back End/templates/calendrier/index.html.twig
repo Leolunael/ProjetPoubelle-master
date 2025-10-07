@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calendrier de collecte{% endblock %}
+
+{% block body %}
+  <h1>Calendrier de collecte</h1>
+    {# Formulaire simplifié #}
+    {{ form_start(form, {'method': 'POST', 'action': path('calendrier_index')}) }}
+       {{ form_row(form.adresse) }}
+        <button type="submit">Rechercher</button>
+    {{ form_end(form) }}
+
+    {# Affichage debug des résultats #}
+    <div >
+      
+        {% if resultats is not empty %}
+            <table class="table">
+            <thead>
+                <tr>
+                    <th>Adresse</th>
+                    <th>Type de déchet</th>
+                    <th>Jour de collecte</th>
+                    <th>Remarques</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for collecte in resultats %}
+                    <tr>
+                        <td>{{ collecte.adresse }}</td>
+                        <td>{{ collecte.typeDechet }}</td>
+                        <td>{{ collecte.jourCollecte|date('l d/m/Y') }}</td>
+                        <td>{{ collecte.remarque ?: '-' }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>Aucun résultat 
+                (Recherche effectuée ? {{ searchPerformed ? 'OUI' : 'NON' }} | 
+                Adresse cherchée : "{{ adresse_recherchee|default('rien') }}")</p>
+        {% endif %}
+    </div>
+{% endblock %}
